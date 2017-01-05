@@ -1,0 +1,12 @@
+[Core]
+name = hello
+module = hello
+
+[Documentation]
+description = Says hello
+
+[Python]
+version = 3
+
+[Errbot]
+max = 4.3.5
