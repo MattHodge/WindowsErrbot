@@ -34,10 +34,7 @@ else
 
 # Install Required Python Packages
 & python -m pip install --upgrade pip
-& python -m pip install err
 python -m pip install -r ./requirements.txt
-#& python -m pip install slackclient
-#& python -m pip install git+https://github.com/alvaroaleman/pywinrm.git@bugfix/python3_stderr#egg=pywinrm
 
 # Create Errbot Directories
-New-Item -Type Directory -Path 'C:\errdata' -Force
+New-Item -Type Directory -Path 'C:\vagrant\data' -Force
