@@ -13,6 +13,7 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
 Vagrant.configure("2") do |config|
     config.vm.box = "MattHodge/Windows2016-WMF5-NOCM"
+    #config.vm.box = "MattHodge/Windows2016StdCore-WMF5-NOCM"
     config.vm.provider "virtualbox" do |vb|
         vb.gui = true
         vb.memory = "1024"
@@ -22,6 +23,12 @@ Vagrant.configure("2") do |config|
         v.linked_clone = true
     end
 
+    # remove default vagrant folder
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    # share the errbot name
+    config.vm.synced_folder ".", "/errbot"
+
     # loop through each env variable to add
     env_vars.each do |env_var_name, env_var_value|
         config.vm.provision "shell", inline: <<-SHELL
@@ -30,34 +37,7 @@ Vagrant.configure("2") do |config|
         SHELL
     end
 
-    # config.vm.provision "shell", path: "install_errbot.ps1"
-
-    # config.vm.provision "shell", inline: <<-SHELL
-    #     if (!(Get-Command -Name 'choco'))
-    #     {
-    #         $env:chocolateyUseWindowsCompression = 'true'
-    #         iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-    #     }
-
-    #     choco install python -version 3.5.2.20161029 -y
-    #     choco install git.install -y
-
-    #     # Leaving test tools out, maybe these will work in Docker instead
-    #     # sudo pip -q install coverage
-    #     # sudo pip -q install pytest-pep8
-    #     # mkdir -p /vagrant/err-data
-    #     # mkdir -p /vagrant/err-plugins
-    # SHELL
-
-    # config.vm.provision "shell", inline: <<-PYTHON
-    #     $env:Path += ";C:\\Program Files\Git\bin\"
-    #     python -m pip install --upgrade pip
-
-    #     New-Item -Type Directory -Path 'C:\\errdata' -Force
-    #     python -m pip install err
-    #     python -m pip install slackclient
-    #     python -m pip install git+https://github.com/alvaroaleman/pywinrm.git@bugfix/python3_stderr#egg=pywinrm
-    # PYTHON
+    config.vm.provision "shell", path: "install_errbot.ps1"
 
   # config.vm.network "forwarded_port", guest: 80, host: 8080
   # config.vm.network "private_network", ip: "192.168.33.10"

@@ -1,15 +1,14 @@
 $errbotExePath = (Get-Command errbot).Source
-$errbotPath = 'C:\vagrant'
+$errbotPath = "C:\errbot"
+$serviceName = 'errbot'
 
-# Install nssm
-if (!(Get-Command -Name 'nssm' -ErrorAction SilentlyContinue))
+if (Get-Service -Name $serviceName -ErrorAction SilentlyContinue)
 {
-    choco install nssm -y
-}
-else
-{
-    Write-Output "nssm is already installed"
+    Stop-Service -Name $serviceName -Force
+    & nssm remove $serviceName confirm
 }
 
-& nssm install errbot $errbotExePath -c config_slack.py
-& nssm set errbot AppDirectory $errbotPath
+& nssm install $serviceName $errbotExePath -c config.py
+& nssm set $serviceName AppDirectory $errbotPath
+
+Start-Service -Name $serviceName
