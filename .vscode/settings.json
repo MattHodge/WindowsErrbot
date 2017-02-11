@@ -5,7 +5,7 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "__pycache__/**": true,
+        "**/__pycache__/**": true,
         ".vagrant/**": true,
         "data/**": true
     }
