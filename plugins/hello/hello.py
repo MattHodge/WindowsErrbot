@@ -33,16 +33,17 @@ Write-Output "In Germany!"
             first_name=name
         )
 
-    @arg_botcmd('name', type=str)
-    @arg_botcmd('--last-name', dest='last_name', type=str)
-    def saymynameagain(self, message, name=None, last_name=None):
-        """Say the name and optional last name"""
-        if last_name:
-            yield "Hello again, {first_name} {last_name}".format(
-                first_name=name,
-                last_name=last_name,
-            )
-        else:
-            yield "Hello again, {first_name}".format(
-                first_name=name
-            )
+    # likely take this part out
+    # @arg_botcmd('name', type=str)
+    # @arg_botcmd('--last-name', dest='last_name', type=str)
+    # def saymynameagain(self, message, name=None, last_name=None):
+    #     """Say the name and optional last name"""
+    #     if last_name:
+    #         yield "Hello again, {first_name} {last_name}".format(
+    #             first_name=name,
+    #             last_name=last_name,
+    #         )
+    #     else:
+    #         yield "Hello again, {first_name}".format(
+    #             first_name=name
+    #         )
