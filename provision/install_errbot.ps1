@@ -18,7 +18,12 @@ else
 
 choco install python -version 3.5.2.20161029 -y
 choco install git.install -y
+
+# used for running Errbot as a Service
 choco install nssm -y
+
+# used for demo purposes
+choco install visualstudiocode -y
 
 # Install Required Python Packages
 python -m pip install --upgrade pip

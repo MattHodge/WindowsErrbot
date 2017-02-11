@@ -14,4 +14,4 @@ BOT_LOG_FILE = './data/err.log'
 BOT_LOG_LEVEL = logging.DEBUG
 BOT_PREFIX = '!'
 CHATROOM_PRESENCE = ()
-DIVERT_TO_PRIVATE = ('help')
+DIVERT_TO_PRIVATE = ('')
