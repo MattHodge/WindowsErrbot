@@ -7,7 +7,7 @@ function Get-ServiceBot
     [CmdletBinding()]
     Param
     (
-        # Param1 help description
+        # Name of the service
         [Parameter(Mandatory=$true)]
         $Name
     )
@@ -15,4 +15,20 @@ function Get-ServiceBot
     $svc = Get-Service -Name $name
 
     Write-Output "Service *$($svc.DisplayName)* (``$($svc.Name)``) is currently ``$($svc.Status)``"
+
+    <# Error Handling
+
+    $ErrorActionPreference = 'Stop'
+
+    try
+    {
+        $svc = Get-Service -Name $name
+
+        Write-Output "Service *$($svc.DisplayName)* (``$($svc.Name)``) is currently ``$($svc.Status)``"
+    }
+    catch
+    {
+        Write-Output ":fire: Service ``$($Name)`` does not exist on this machine."
+    }
+    #>
 }
