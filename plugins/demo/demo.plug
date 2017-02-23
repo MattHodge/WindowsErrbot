@@ -1,0 +1,12 @@
+[Core]
+name = demo
+module = demo
+
+[Documentation]
+description = Demo functions
+
+[Python]
+version = 3
+
+[Errbot]
+max = 4.3.5

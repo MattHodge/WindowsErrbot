@@ -78,29 +78,28 @@ class psexample(BotPlugin):
         ps_result = run_ps_function_file('Get-ServiceBot.ps1', 'Get-ServiceBot', ps_params)
         yield ps_result
 
+    # @arg_botcmd('process_name', type=str)
+    # def getproc(self, msg, process_name=None):
+    #     """Get a PowerShell Process"""
 
-    @arg_botcmd('process_name', type=str)
-    def getproc(self, msg, process_name=None):
-        """Get a PowerShell Process"""
+    #     get_proc_cmd = "& { Get-Process -Name %s }" % process_name
 
-        get_proc_cmd = "& { Get-Process -Name %s }" % process_name
-
-        p = subprocess.check_output(['powershell.exe', '-command', get_proc_cmd])
-        decoded_output = p.decode('cp1252')
-        yield decoded_output
-
+    #     p = subprocess.check_output(['powershell.exe', '-command', get_proc_cmd])
+    #     decoded_output = p.decode('cp1252')
+    #     yield decoded_output
 
 
-    @arg_botcmd('service_name', type=str)
-    def getservice(self, msg, service_name=None):
-        """Get Information on PowerShell Service"""
 
-        # yield the service object as json
-        get_svc_cmd = "& { Get-Service -Name %s | ConvertTo-Json -Compress }" % service_name
+    # @arg_botcmd('service_name', type=str)
+    # def getservice(self, msg, service_name=None):
+    #     """Get Information on PowerShell Service"""
 
-        p = subprocess.check_output(['powershell.exe', '-command', get_svc_cmd])
+    #     # yield the service object as json
+    #     get_svc_cmd = "& { Get-Service -Name %s | ConvertTo-Json -Compress }" % service_name
 
-        # convert the json to an object
-        json_output = json.loads(p.decode('cp1252'))
+    #     p = subprocess.check_output(['powershell.exe', '-command', get_svc_cmd])
 
-        yield json_output['DisplayName']
+    #     # convert the json to an object
+    #     json_output = json.loads(p.decode('cp1252'))
+
+    #     yield json_output['DisplayName']

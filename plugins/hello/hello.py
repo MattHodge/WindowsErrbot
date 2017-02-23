@@ -8,6 +8,13 @@ class hello(BotPlugin):
         """Say hello to the world"""
         yield "Hello, world!"
 
+    @arg_botcmd('name', type=str)
+    def saymyname(self, message, name=None):
+        """Say the entered name"""
+        yield "Hello, {first_name}".format(
+            first_name=name
+        )
+
     @botcmd
     def hellopretty(self, msg, args):
         """Say hello to the world, but more pretty this time"""
@@ -19,31 +26,10 @@ class hello(BotPlugin):
         code_block = """
 Or if you have a code block:
 \`\`\`
-Write-Output "Welcome to PSConf2017!"
-Write-Output "In Germany!"
+Welcome to PSConf2017!
+In Germany!
+:)
 \`\`\`
 """
         yield code_block
         yield "https://api.giphy.com/img/giphy_translate.gif"
-
-    @arg_botcmd('name', type=str)
-    def saymyname(self, message, name=None):
-        """Say the entered name"""
-        yield "Hello, {first_name}".format(
-            first_name=name
-        )
-
-    # likely take this part out
-    # @arg_botcmd('name', type=str)
-    # @arg_botcmd('--last-name', dest='last_name', type=str)
-    # def saymynameagain(self, message, name=None, last_name=None):
-    #     """Say the name and optional last name"""
-    #     if last_name:
-    #         yield "Hello again, {first_name} {last_name}".format(
-    #             first_name=name,
-    #             last_name=last_name,
-    #         )
-    #     else:
-    #         yield "Hello again, {first_name}".format(
-    #             first_name=name
-    #         )

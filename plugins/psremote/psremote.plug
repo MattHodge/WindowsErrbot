@@ -1,0 +1,12 @@
+[Core]
+name = psremote
+module = psremote
+
+[Documentation]
+description = Some examples with PowerShell
+
+[Python]
+version = 3
+
+[Errbot]
+max = 4.3.5
