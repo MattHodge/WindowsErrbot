@@ -47,6 +47,7 @@ Vagrant.configure("2") do |config|
         win2016core.vm.box = "MattHodge/Windows2016StdCore-WMF5-NOCM"
         win2016core.vm.hostname = "win2016core"
         win2016core.vm.network "private_network", ip: "172.28.128.101"
+        win2016core.vm.network "forwarded_port", guest: 80, host: 8080
         win2016core.vm.provider "virtualbox" do |vb|
             vb.linked_clone = true
             vb.memory = 1024
