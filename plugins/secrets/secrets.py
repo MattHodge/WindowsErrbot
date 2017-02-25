@@ -16,3 +16,4 @@ class secrets(BotPlugin):
             yield "The password is **{}**".format(
                 test_password
             )
+

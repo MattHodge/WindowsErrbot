@@ -31,3 +31,10 @@ python -m pip install -r ./requirements.txt
 
 # Create Errbot Directories
 New-Item -Type Directory -Path "$($botPath)\data" -Force
+
+# Create Eventlog source for auditing (not required)
+if (-not([system.diagnostics.eventlog]::SourceExists('Errbot')))
+{
+    [system.diagnostics.EventLog]::CreateEventSource('Errbot', 'Application')
+}
+

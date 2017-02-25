@@ -15,3 +15,7 @@ BOT_LOG_LEVEL = logging.DEBUG
 BOT_PREFIX = '!'
 CHATROOM_PRESENCE = ()
 DIVERT_TO_PRIVATE = ('')
+
+# ACCESS_CONTROLS = {
+#     'getsvc': {'allowusers': ('fakeuser',) }
+# }
