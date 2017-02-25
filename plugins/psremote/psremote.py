@@ -19,7 +19,7 @@ def run_remote_ps(computername, port, username, password, ps_script):
         'exit_code': r.status_code,
         'std_out': r.std_out.decode('cp1252')
     }
-
+    
     return cmd_out
 
 class psremote(BotPlugin):
