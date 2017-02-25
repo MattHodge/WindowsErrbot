@@ -9,5 +9,6 @@
         ".vagrant/**": true,
         "data/**": true
     },
-    "python.linting.flake8Enabled": false
+    "python.linting.flake8Enabled": true,
+    "python.pythonPath": "${workspaceRoot}/venv/bin/python3.5"
 }

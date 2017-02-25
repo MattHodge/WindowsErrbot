@@ -1,8 +1,7 @@
 from errbot import BotPlugin, botcmd, arg_botcmd
-import subprocess # allow running of processes
+import subprocess  # allow running of processes
 import sys
-import winrm
-import json
+
 
 def run_ps_inline(ps_script):
     """Function for running PowerShell locally"""
@@ -18,6 +17,7 @@ def run_ps_inline(ps_script):
     # return the output
     return output
 
+
 def run_ps_function_file(file, function_name, params):
     """Function for dot sourcing a PowerShell script and passing it paramaters"""
 
@@ -28,13 +28,14 @@ def run_ps_function_file(file, function_name, params):
     script_block = "& { . %s ; %s %s }" % (full_file_path, function_name, params)
 
     # Execute a subprocess
-    p = subprocess.check_output(['powershell.exe', '-command', script_block ])
+    p = subprocess.check_output(['powershell.exe', '-command', script_block])
 
     # Decode the output
     output = p.decode('cp1252')
 
     # return the output
     return output
+
 
 class psexample(BotPlugin):
     """Example of getting processes using PowerShell"""
@@ -87,8 +88,6 @@ class psexample(BotPlugin):
     #     p = subprocess.check_output(['powershell.exe', '-command', get_proc_cmd])
     #     decoded_output = p.decode('cp1252')
     #     yield decoded_output
-
-
 
     # @arg_botcmd('service_name', type=str)
     # def getservice(self, msg, service_name=None):
