@@ -13,13 +13,13 @@ def run_remote_ps(computername, port, username, password, ps_script):
     )
 
     # Run the command remotley
-    s = winrm.Session(name_and_winrm_port, auth=(username, password))
-    r = s.run_ps(ps_script)
+    session = winrm.Session(name_and_winrm_port, auth=(username, password))
+    result = session.run_ps(ps_script)
 
     # Create return object
     cmd_out = {
-        'exit_code': r.status_code,
-        'std_out': r.std_out.decode('cp1252')
+        'exit_code': result.status_code,
+        'std_out': result.std_out.decode('cp1252')
     }
 
     return cmd_out
@@ -27,27 +27,48 @@ def run_remote_ps(computername, port, username, password, ps_script):
 
 class psremote(BotPlugin):
     @arg_botcmd('computername', type=str)
+    @arg_botcmd('service_name', type=str)
     @arg_botcmd('--port', dest='port', type=int, default=5985)
-    def restartpc(self, message, computername=None, port=None):
+    def stopsvc(self, message, computername=None, service_name=None, port=None):
         """
-        Restart Computer over WinRM
+        Stop Service over WinRM
         """
 
-        ps_script = """
-            # sleep for demo purposes
-            Start-Sleep -Seconds 5
-
-            Restart-Computer -Force -Verbose
-        """
+        ps_script = "Stop-Service -Name %s" % service_name
 
         cmd_output = run_remote_ps(computername, port, 'vagrant', 'vagrant', ps_script)
 
         if cmd_output['exit_code'] == 0:
-            yield ":white_check_mark: Computer \`{computername}\` has been restarted.".format(
+            yield ":white_check_mark: Service \`{service_name}\` has been stopped on \`{computername}\`".format(
+                service_name=service_name,
                 computername=computername
             )
         else:
-            yield ":x: Unable to restart Computer \`{computername}\`".format(
+            yield ":x: Unable to stop \`{service_name}\` on \`{computername}\`".format(
+                service_name=service_name,
+                computername=computername
+            )
+
+    @arg_botcmd('computername', type=str)
+    @arg_botcmd('service_name', type=str)
+    @arg_botcmd('--port', dest='port', type=int, default=5985)
+    def startsvc(self, message, computername=None, service_name=None, port=None):
+        """
+        Start service over WinRM
+        """
+
+        ps_script = "Start-Service -Name %s" % service_name
+
+        cmd_output = run_remote_ps(computername, port, 'vagrant', 'vagrant', ps_script)
+
+        if cmd_output['exit_code'] == 0:
+            yield ":white_check_mark: Service \`{service_name}\` has been started on \`{computername}\`".format(
+                service_name=service_name,
+                computername=computername
+            )
+        else:
+            yield ":x: Unable to start \`{service_name}\` on \`{computername}\`".format(
+                service_name=service_name,
                 computername=computername
             )
 
@@ -98,7 +119,7 @@ class psremote(BotPlugin):
                 computername=computername
             )
         else:
-            yield ":x: Unable to set \`{feature_name}\` as *ensure* on Computer \`{computername}\`".format(
+            yield ":x: Unable to set \`{feature_name}\` as *{ensure}* on Computer \`{computername}\`".format(
                 feature_name=feature_name,
                 ensure=ensure,
                 computername=computername

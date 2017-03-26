@@ -79,7 +79,7 @@ class psexample(BotPlugin):
         ps_result = run_ps_function_file('Get-ServiceBot.ps1', 'Get-ServiceBot', ps_params)
         yield ps_result
 
-        # Enable logging to event viewer
+        # # Enable logging to event viewer
         # ps_script = "Write-EventLog -LogName Application -Source 'Errbot' -EntryType Information -EventID 1 -Message 'User {user} ran this command: {command}. The result was {result}'".format(
         #     user=msg.frm,
         #     command=msg,

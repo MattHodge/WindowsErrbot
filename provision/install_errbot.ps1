@@ -33,8 +33,10 @@ python -m pip install -r ./requirements.txt
 New-Item -Type Directory -Path "$($botPath)\data" -Force
 
 # Create Eventlog source for auditing (not required)
-if (-not([system.diagnostics.eventlog]::SourceExists('Errbot')))
+if ([system.diagnostics.eventlog]::SourceExists('Errbot'))
 {
+    Write-Output "Event source for Errbot Already Exists"
+} else {
     [system.diagnostics.EventLog]::CreateEventSource('Errbot', 'Application')
 }
 

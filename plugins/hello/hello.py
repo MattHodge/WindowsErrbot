@@ -9,7 +9,7 @@ class hello(BotPlugin):
         yield "Hello, world!"
 
     @arg_botcmd('name', type=str)
-    def saymyname(self, message, name=None):
+    def saymyname(self, msg, name=None):
         """Say the entered name"""
         yield "Hello, {first_name}".format(
             first_name=name
