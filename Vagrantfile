@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
         errbot.vm.box = "MattHodge/Windows2016-WMF5-NOCM"
         errbot.vm.hostname = "errbot"
         errbot.vm.network "private_network", ip: "172.28.128.100"
+        errbot.vm.network "forwarded_port", guest: 3389, host: 23339
         errbot.vm.provider "virtualbox" do |vb|
             vb.linked_clone = true
             vb.memory = 2048
@@ -48,6 +49,7 @@ Vagrant.configure("2") do |config|
         win2016core.vm.hostname = "win2016core"
         win2016core.vm.network "private_network", ip: "172.28.128.101"
         win2016core.vm.network "forwarded_port", guest: 80, host: 8080
+        win2016core.vm.network "forwarded_port", guest: 3389, host: 33339
         win2016core.vm.provider "virtualbox" do |vb|
             vb.linked_clone = true
             vb.memory = 1024

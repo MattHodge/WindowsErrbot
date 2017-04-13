@@ -40,3 +40,8 @@ if ([system.diagnostics.eventlog]::SourceExists('Errbot'))
     [system.diagnostics.EventLog]::CreateEventSource('Errbot', 'Application')
 }
 
+# used for validating the demo setup
+choco install pester -y
+
+# run tests
+. $botPath\provision\demo.tests.ps1
