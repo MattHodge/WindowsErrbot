@@ -25,7 +25,7 @@ Describe "Demo" {
             (get-command nssm).Name | Should Match "nssm.exe"
         }
 
-        $pipPackages = & pip freeze
+        $pipPackages = & python -m pip freeze
 
         It "pip packages installed" {
             $pipPackages.Count | Should Be 37
