@@ -21,9 +21,9 @@ Describe "Demo" {
         It "python exe should exist" {
             (get-command python).Source | Test-Path | Should Be $true
         }
-        It "nssm should be installed" {
-            (get-command nssm).Name | Should Match "nssm.exe"
-        }
+        # It "nssm should be installed" {
+        #     (get-command nssm).Name | Should Match "nssm.exe"
+        # }
 
         $pipPackages = & python -m pip freeze
 

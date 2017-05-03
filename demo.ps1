@@ -1,3 +1,8 @@
+# BEFORE DEMO
+# connect to RDP sessions
+
+# validate !dscfeature telnet-client 172.28.128.101
+
 ###########################
 # DEMO 1
 ###########################
