@@ -1,7 +1,8 @@
 # BEFORE DEMO
 # connect to RDP sessions
-
+# Stop-Service -Name TrustedInstaller -Force
 # validate !dscfeature telnet-client 172.28.128.101
+# Have powershell session open on Errbot and Win2016
 
 ###########################
 # DEMO 1
