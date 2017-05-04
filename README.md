@@ -7,7 +7,6 @@ This repository makes it easy to get an Errbot development environment running o
 - [Vagrant](#vagrant)
     - [Create an .env.yml file](#create-an-envyml-file)
 - [Manual Setup](#manual-setup)
-- [Local Development](#local-development)
 
 <!-- /TOC -->
 
@@ -33,11 +32,3 @@ If you want to setup Errbot on an existing Windows machine, you can:
 * Run `install_errbot.ps1`
 * Make `C:\errbot` directory and copy in `config.py` and `config_slack.py`
 * Make `C:\errbot\plugins` directory
-
-## Local Development
-
-Run the following to have flake8 working in VSCode
-```bash
-virtualenv -p `which python3` venv
-source venv/bin/activate
-```
