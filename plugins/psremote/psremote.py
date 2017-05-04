@@ -30,9 +30,7 @@ class psremote(BotPlugin):
     @arg_botcmd('service_name', type=str)
     @arg_botcmd('--port', dest='port', type=int, default=5985)
     def stopsvc(self, message, computername=None, service_name=None, port=None):
-        """
-        Stop Service over WinRM
-        """
+        """Stop Service over WinRM"""
 
         ps_script = "Stop-Service -Name %s" % service_name
 
@@ -53,9 +51,7 @@ class psremote(BotPlugin):
     @arg_botcmd('service_name', type=str)
     @arg_botcmd('--port', dest='port', type=int, default=5985)
     def startsvc(self, message, computername=None, service_name=None, port=None):
-        """
-        Start service over WinRM
-        """
+        """Start service over WinRM"""
 
         ps_script = "Start-Service -Name %s" % service_name
 
@@ -77,9 +73,7 @@ class psremote(BotPlugin):
     @arg_botcmd('--port', dest='port', type=int, default=5985)
     @arg_botcmd('--ensure', dest='ensure', type=str, default='Present')
     def dscfeature(self, message, computername=None, port=None, ensure=None, feature_name=None):
-        """
-        Install DSC Features Remotley
-        """
+        """Install DSC Features Remotley"""
 
         ps_script = """
             $VerbosePreference="Continue"
