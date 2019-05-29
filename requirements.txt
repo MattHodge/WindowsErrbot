@@ -20,7 +20,7 @@ pyasn1==0.4.5
 pycparser==2.17
 pygments-markdown-lexer==0.1.0.dev39
 Pygments==2.1.3
-pyOpenSSL==16.2.0
+pyOpenSSL==19.0.0
 requests-ntlm==1.0.0
 requests==2.12.3
 rocket-errbot==1.2.5
