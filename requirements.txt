@@ -13,7 +13,7 @@ idna==2.1
 Jinja2==2.8
 keyring==10.3.1
 Markdown==2.6.7
-MarkupSafe==0.23
+MarkupSafe==1.1.1
 ntlm-auth==1.0.2
 ordereddict==1.1
 pyasn1==0.1.9
