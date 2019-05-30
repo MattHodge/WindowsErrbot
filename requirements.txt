@@ -2,7 +2,7 @@ ansi==0.1.3
 beautifulsoup4==4.5.1
 bottle==0.12.16
 cffi==1.9.1
-colorlog==2.10.0
+colorlog==4.0.2
 cryptography==1.6
 daemonize==2.4.7
 dnspython==1.15.0
