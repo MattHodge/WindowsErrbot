@@ -32,4 +32,4 @@ WebOb==1.6.3
 websocket-client==0.56.0
 WebTest==2.0.33
 xmltodict==0.10.2
-Yapsy==1.11.223
+Yapsy==1.12.0
