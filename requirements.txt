@@ -4,7 +4,7 @@ bottle==0.12.16
 cffi==1.9.1
 colorlog==4.0.2
 cryptography==1.6
-daemonize==2.4.7
+daemonize==2.5.0
 dnspython==1.15.0
 dnspython3==1.15.0
 errbot==4.3.5
