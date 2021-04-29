@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: cffi
+    versions:
+    - 1.14.4
+  - dependency-name: markdown
+    versions:
+    - 3.3.3
+  - dependency-name: webob
+    versions:
+    - 1.8.6
